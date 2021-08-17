@@ -16,7 +16,6 @@
     "react-icons": "^4.2.0",
     "react-notifications-component": "^3.1.0",
     "react-scripts": "4.0.3",
-    "toastr": "^2.1.4",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
@@ -54,7 +53,7 @@
     "prettier": "2.3.2"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{js,jsx,scss,css,md}": "prettier --write"
   }
 }

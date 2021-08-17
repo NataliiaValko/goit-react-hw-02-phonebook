@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import { store } from 'react-notifications-component';
-
 import Section from '../Section';
 import Container from '../Container';
 import ContactForm from '../ContactForm';
