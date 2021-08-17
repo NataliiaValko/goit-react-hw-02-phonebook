@@ -1,5 +1,11 @@
 import { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import { store } from 'react-notifications-component';
+
+// import toastr from 'toastr';
+// import tosrtOption from '../Toastr/Toastr';
 
 import Section from '../Section';
 import Container from '../Container';
@@ -7,7 +13,7 @@ import ContactForm from '../ContactForm';
 import Filter from '../Filter';
 import ContactList from '../ContactList';
 
-// import s from "./App.module.css";
+import s from './App.module.css';
 
 class App extends Component {
   state = {
@@ -15,16 +21,45 @@ class App extends Component {
     filter: '',
   };
 
-  addContact = ({ name, number }) => {
-    const contact = {
-      id: uuidv4(),
-      name,
-      number,
-    };
+  repeatCheck = newName => {
+    return this.state.contacts.find(contact => contact.name === newName)
+      ? false
+      : true;
+  };
 
-    this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
-    }));
+  showNotification = () => {
+    store.addNotification({
+      title: 'Oops!',
+      message:
+        'But there’s already a contact with that name on your contact list',
+      type: 'danger',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animate__animated', 'animate__fadeIn'],
+      animationOut: ['animate__animated', 'animate__fadeOut'],
+      dismiss: {
+        duration: 3000,
+        onScreen: true,
+      },
+    });
+  };
+
+  addContact = ({ name, number }) => {
+    if (this.repeatCheck(name)) {
+      const contact = {
+        id: uuidv4(),
+        name,
+        number,
+      };
+
+      this.setState(({ contacts }) => ({
+        contacts: [contact, ...contacts],
+      }));
+      return;
+    }
+    // console.log('repeat');
+    this.showNotification();
+    // toastr.error('warningStr');
   };
 
   deleteContact = contactId => {
@@ -52,22 +87,29 @@ class App extends Component {
     const ResultSearch = this.getResultSearch();
     return (
       <>
-        <Section>
+        <ReactNotification />
+        <header className={s.header}>
           <Container>
-            <h1>My phonebook</h1>
-            <h2>Add new contact</h2>
-            <ContactForm onSubmit={this.addContact} />
+            <h1 className={s.title}>My phonebook</h1>
           </Container>
+        </header>
+        <Section nameForClass={'section'}>
+          <div className={s.newContactWrapper}>
+            <h2 className={s.newContactTitle}>A new contact</h2>
+            <ContactForm onSubmit={this.addContact} />
+          </div>
         </Section>
-        <Section>
-          <Container>
-            <h2>Contacts</h2>
-            <Filter name={filter} onChange={this.setFilterValue} />
+        <Section nameForClass={'sectionList'}>
+          <h2 className={s.titleContacts}>Contacts</h2>
+          <Filter name={filter} onChange={this.setFilterValue} />
+          {this.state.contacts.length > 0 ? (
             <ContactList
               contacts={ResultSearch}
               onDeleteContact={this.deleteContact}
             />
-          </Container>
+          ) : (
+            <p className={s.text}>{'There’s nothing here yet...'}</p>
+          )}
         </Section>
       </>
     );

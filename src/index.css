@@ -1,15 +1,13 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'DM Serif Display', serif;
   background-image: url('./img//AdobeStock.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 0 0;
   background-attachment: fixed;
+  text-align: center;
+  min-height: 100vh;
 }
 
 code {
@@ -25,4 +23,13 @@ img {
 
 button {
   cursor: pointer;
+}
+
+div.notification__item--danger {
+  background-color: rgba(206, 132, 132, 0.836);
+  border-left: 8px solid rgb(173, 71, 71);
+}
+
+div.notification__item--danger .notification__timer {
+  background-color: rgb(173, 71, 71);
 }
