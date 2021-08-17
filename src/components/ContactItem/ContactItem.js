@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { FiPhoneCall } from 'react-icons/fi';
 
 import s from './ContactItem.module.css';
@@ -23,3 +24,10 @@ const ContactItem = ({ id, name, number, onDeleteContact }) => (
 );
 
 export default ContactItem;
+
+ContactItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
+};

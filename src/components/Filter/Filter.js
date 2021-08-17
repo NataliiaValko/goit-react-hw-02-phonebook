@@ -1,10 +1,10 @@
+import PropTypes from 'prop-types';
 import { GoSearch } from 'react-icons/go';
 
 import s from './Filter.module.css';
 
 const Filter = ({ name, onChange }) => (
   <>
-    {/* <p>Find contacts by name</p> */}
     <label className={s.label}>
       <input
         className={s.input}
@@ -22,3 +22,8 @@ const Filter = ({ name, onChange }) => (
 );
 
 export default Filter;
+
+Filter.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+};

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './Section.module.css';
 import Container from '../Container';
 
@@ -8,3 +9,7 @@ const Section = ({ nameForClass, children }) => (
 );
 
 export default Section;
+
+Section.propTypes = {
+  nameForClass: PropTypes.string.isRequired,
+};

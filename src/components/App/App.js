@@ -4,9 +4,6 @@ import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import { store } from 'react-notifications-component';
 
-// import toastr from 'toastr';
-// import tosrtOption from '../Toastr/Toastr';
-
 import Section from '../Section';
 import Container from '../Container';
 import ContactForm from '../ContactForm';
@@ -57,9 +54,7 @@ class App extends Component {
       }));
       return;
     }
-    // console.log('repeat');
     this.showNotification();
-    // toastr.error('warningStr');
   };
 
   deleteContact = contactId => {
@@ -102,7 +97,7 @@ class App extends Component {
         <Section nameForClass={'sectionList'}>
           <h2 className={s.titleContacts}>Contacts</h2>
           <Filter name={filter} onChange={this.setFilterValue} />
-          {this.state.contacts.length > 0 ? (
+          {this.state.contacts[0] && !this.state.filter ? (
             <ContactList
               contacts={ResultSearch}
               onDeleteContact={this.deleteContact}

@@ -2,28 +2,19 @@
   padding-left: 100px;
   display: block;
   width: 70%;
-  /* width: 400px; */
-  /* display: flex; */
   position: relative;
-  /* top: 0px; */
   align-items: center;
-  /* min-width: 700px; */
   height: 80px;
-  /* justify-content: start; */
   text-decoration: none;
-  /* justify-content: space-between; */
 }
 
 .name {
-  /* min-width: 200px; */
-  /* position: relative; */
   text-align: left;
   color: rgb(39, 39, 39);
   font-size: 36px;
   line-height: 1.3;
   margin-top: 0;
   margin-bottom: 0;
-  /* margin-right: 20px; */
   text-transform: capitalize;
 }
 
@@ -43,8 +34,6 @@
 }
 
 .number {
-  /* position: relative;
-  top: 10px; */
   color: rgb(119, 138, 175);
   font-size: 30px;
   line-height: 1.3;
@@ -56,7 +45,6 @@
   display: block;
   margin-left: auto;
   margin-right: 70px;
-  /* margin-right: auto; */
   width: 160px;
   height: 50px;
   border-radius: 10px;
