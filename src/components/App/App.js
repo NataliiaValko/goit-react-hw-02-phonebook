@@ -18,9 +18,7 @@ class App extends Component {
   };
 
   repeatCheck = newName => {
-    return this.state.contacts.find(contact => contact.name === newName)
-      ? false
-      : true;
+    return this.state.contacts.find(({ name }) => name === newName);
   };
 
   showNotification = () => {
@@ -41,7 +39,7 @@ class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    if (this.repeatCheck(name)) {
+    if (!this.repeatCheck(name)) {
       const contact = {
         id: uuidv4(),
         name,
@@ -96,13 +94,13 @@ class App extends Component {
         <Section nameForClass={'sectionList'}>
           <h2 className={s.titleContacts}>Contacts</h2>
           <Filter name={filter} onChange={this.setFilterValue} />
-          {this.state.contacts[0] && !this.state.filter ? (
+          {this.state.contacts[0] && ResultSearch[0] ? (
             <ContactList
               contacts={ResultSearch}
               onDeleteContact={this.deleteContact}
             />
           ) : (
-            <p className={s.text}>{'There’s nothing here yet...'}</p>
+            <p className={s.text}>There’s nothing here yet...</p>
           )}
         </Section>
       </>
